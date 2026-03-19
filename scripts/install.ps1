@@ -2,11 +2,12 @@ $ErrorActionPreference = "Stop"
 
 if (Test-Path "pyproject.toml") {
     $PkgSpec = "."
-} elseif ($env:TRIGGERMIND_GIT_URL) {
-    $PkgSpec = "git+" + $env:TRIGGERMIND_GIT_URL
+} elseif ($env:TRIGGERMIND_ARCHIVE_URL) {
+    $PkgSpec = $env:TRIGGERMIND_ARCHIVE_URL
 } else {
-    Write-Host "[TriggerMind] Not in repo root and TRIGGERMIND_GIT_URL is not set."
-    Write-Host "[TriggerMind] Clone the repo first, then run: py -m pip install --user -U ."
+    Write-Host "[TriggerMind] Not in repo root and TRIGGERMIND_ARCHIVE_URL is not set."
+    Write-Host "[TriggerMind] Option A: cd into source folder and run: py -m pip install --user -U ."
+    Write-Host "[TriggerMind] Option B: set TRIGGERMIND_ARCHIVE_URL to your GitHub ZIP URL and rerun."
     exit 1
 }
 

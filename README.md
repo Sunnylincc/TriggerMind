@@ -28,22 +28,6 @@ If `py` is unavailable on Windows, use:
 python -m pip install --user -U .
 ```
 
-### No `git clone` install (from GitHub ZIP URL)
-
-> Replace `<YOUR_ORG>` with your real GitHub org/user.
-
-#### macOS + Linux
-
-```bash
-python3 -m pip install --user -U "https://github.com/<YOUR_ORG>/triggermind/archive/refs/heads/main.zip"
-```
-
-#### Windows PowerShell
-
-```powershell
-py -m pip install --user -U "https://github.com/<YOUR_ORG>/triggermind/archive/refs/heads/main.zip"
-```
-
 After install, run:
 
 ```bash

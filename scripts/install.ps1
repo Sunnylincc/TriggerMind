@@ -1,14 +1,12 @@
 $ErrorActionPreference = "Stop"
+$DefaultArchiveUrl = "https://github.com/Sunnylincc/TriggerMind/archive/refs/heads/main.zip"
 
 if ($env:TRIGGERMIND_ARCHIVE_URL) {
     $PkgSpec = $env:TRIGGERMIND_ARCHIVE_URL
 } elseif (Test-Path "pyproject.toml") {
     $PkgSpec = "."
 } else {
-    Write-Host "[TriggerMind] TRIGGERMIND_ARCHIVE_URL is not set."
-    Write-Host "[TriggerMind] Set it to your ZIP URL, e.g."
-    Write-Host "[TriggerMind] $env:TRIGGERMIND_ARCHIVE_URL='https://github.com/<YOUR_ORG>/triggermind/archive/refs/heads/main.zip'"
-    exit 1
+    $PkgSpec = $DefaultArchiveUrl
 }
 
 if (Get-Command py -ErrorAction SilentlyContinue) {

@@ -11,19 +11,19 @@ TriggerMind stays dormant by default and only intervenes when a user-defined con
 ### macOS + Linux
 
 ```bash
-python3 -m pip install --user -U "https://github.com/<YOUR_ORG>/triggermind/archive/refs/heads/main.zip"
+python3 -m pip install --user -U "https://github.com/Sunnylincc/TriggerMind/archive/refs/heads/main.zip"
 ```
 
 ### Windows PowerShell
 
 ```powershell
-py -m pip install --user -U "https://github.com/<YOUR_ORG>/triggermind/archive/refs/heads/main.zip"
+py -m pip install --user -U "https://github.com/Sunnylincc/TriggerMind/archive/refs/heads/main.zip"
 ```
 
 If `py` is unavailable on Windows, use:
 
 ```powershell
-python -m pip install --user -U "https://github.com/<YOUR_ORG>/triggermind/archive/refs/heads/main.zip"
+python -m pip install --user -U "https://github.com/Sunnylincc/TriggerMind/archive/refs/heads/main.zip"
 ```
 
 ### Optional: install from local source folder

@@ -31,9 +31,9 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/example/triggermind"
-Repository = "https://github.com/example/triggermind"
-Issues = "https://github.com/example/triggermind/issues"
+Homepage = "https://github.com/Sunnylincc/TriggerMind"
+Repository = "https://github.com/Sunnylincc/TriggerMind"
+Issues = "https://github.com/Sunnylincc/TriggerMind/issues"
 
 [project.scripts]
 triggermind = "triggermind.main:run"

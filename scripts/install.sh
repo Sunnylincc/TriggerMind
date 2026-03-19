@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+DEFAULT_ARCHIVE_URL="https://github.com/Sunnylincc/TriggerMind/archive/refs/heads/main.zip"
+
 if [[ -n "${TRIGGERMIND_ARCHIVE_URL:-}" ]]; then
   PKG_SPEC="${TRIGGERMIND_ARCHIVE_URL}"
 elif [[ -f "pyproject.toml" ]]; then
   PKG_SPEC="."
 else
-  echo "[TriggerMind] TRIGGERMIND_ARCHIVE_URL is not set."
-  echo "[TriggerMind] Set it to your ZIP URL, e.g."
-  echo "[TriggerMind] export TRIGGERMIND_ARCHIVE_URL=https://github.com/<YOUR_ORG>/triggermind/archive/refs/heads/main.zip"
-  exit 1
+  PKG_SPEC="$DEFAULT_ARCHIVE_URL"
 fi
 
 if command -v python3 >/dev/null 2>&1; then

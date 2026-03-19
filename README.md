@@ -6,33 +6,43 @@ TriggerMind stays dormant by default and only intervenes when a user-defined con
 
 ## One-line install (copy/paste)
 
-> Use these **default** commands first (no `uv` required).
+> `triggermind` is not published on PyPI yet. Use source install for now.
 
-### macOS + Linux
+### If you already cloned this repo
+
+#### macOS + Linux
 
 ```bash
-python3 -m pip install --user -U triggermind
+python3 -m pip install --user -U .
 ```
 
-### Windows PowerShell
+#### Windows PowerShell
 
 ```powershell
-py -m pip install --user -U triggermind
+py -m pip install --user -U .
 ```
 
 If `py` is unavailable on Windows, use:
 
 ```powershell
-python -m pip install --user -U triggermind
+python -m pip install --user -U .
 ```
 
-### Optional (advanced): uv users
+### Fresh machine (clone + install)
+
+#### macOS + Linux
 
 ```bash
-uv tool install triggermind --upgrade
+git clone https://github.com/<YOUR_ORG>/triggermind.git && cd triggermind && python3 -m pip install --user -U .
 ```
 
-After install, just run:
+#### Windows PowerShell
+
+```powershell
+git clone https://github.com/<YOUR_ORG>/triggermind.git; cd triggermind; py -m pip install --user -U .
+```
+
+After install, run:
 
 ```bash
 triggermind

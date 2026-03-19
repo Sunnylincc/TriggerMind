@@ -51,7 +51,27 @@ triggermind list
 triggermind cancel <id>
 triggermind doctor
 triggermind update
+triggermind ui
 ```
+
+---
+
+
+## Native UI + reminder dialog (v1)
+
+TriggerMind now includes a thin native UI layer while keeping the CLI as the core workflow.
+
+- Launch UI: `triggermind ui`
+- Create timer reminders and absolute-time reminders
+- View currently scheduled reminders
+
+When a reminder fires, TriggerMind shows a visible native prompt with exactly these actions:
+
+- **Dismiss**: marks the reminder as fired
+- **Snooze 5m**: reschedules the same reminder for 5 minutes later
+- **Open TriggerMind**: marks fired and opens the TriggerMind UI
+
+Reminder messages are treated as plain reminder text in v1 (not automation instructions).
 
 ---
 
@@ -75,7 +95,9 @@ This reduces unnecessary token usage, risk, and intrusion.
 - Friendly interactive setup mode (`triggermind` with no args)
 - Local JSON state persistence
 - Lightweight background scheduler daemon
-- Desktop notifications (macOS/Linux) + terminal fallback
+- Minimal native UI (`triggermind ui`) to create and view reminders
+- Visible native reminder dialog with actions: Dismiss, Snooze 5m, Open TriggerMind
+- Desktop notifications fallback for headless/non-GUI environments
 - Clean extension points for future trigger types
 
 ---

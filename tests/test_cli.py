@@ -38,3 +38,16 @@ def test_cli_update_message() -> None:
     result = runner.invoke(app, ["update"])
     assert result.exit_code == 0
     assert "pip install -U triggermind" in result.stdout
+
+
+def test_cli_ui_command(monkeypatch) -> None:
+    runner = CliRunner()
+    called = {"opened": False}
+
+    def fake_ui() -> None:
+        called["opened"] = True
+
+    monkeypatch.setattr("triggermind.main.launch_ui", fake_ui)
+    result = runner.invoke(app, ["ui"])
+    assert result.exit_code == 0
+    assert called["opened"] is True

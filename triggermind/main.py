@@ -11,6 +11,7 @@ from triggermind.doctor import run_doctor
 from triggermind.paths import state_file
 from triggermind.scheduler.daemon import ensure_daemon
 from triggermind.storage.json_store import JSONTriggerStore
+from triggermind.ui import launch_ui
 from triggermind.triggers.absolute import AbsoluteTimeTriggerFactory
 from triggermind.triggers.timer import TimerTriggerFactory
 
@@ -92,6 +93,13 @@ def interactive_guide() -> None:
     else:
         print(_yellow("Invalid selection. Run `triggermind guide` to try again."))
 
+
+
+
+@app.command("ui")
+def ui() -> None:
+    """Open the minimal native TriggerMind UI."""
+    launch_ui()
 
 @app.command("guide")
 def guide() -> None:

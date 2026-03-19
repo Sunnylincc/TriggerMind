@@ -2,99 +2,67 @@
 
 **A local-first, trigger-based AI agent CLI for bounded autonomy.**
 
-TriggerMind is not an always-on copilot. It stays dormant by default and only intervenes when a user-defined condition is met.
+TriggerMind stays dormant by default and only intervenes when a user-defined condition is met.
 
-The MVP ships with practical timer triggers so TriggerMind can be useful every day:
+## One-line install (copy/paste)
 
-- `triggermind start 25m --message "Go back to writing"`
-- `triggermind at 15:00 --message "Review the grant draft"`
+### macOS + Linux
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/example/triggermind/main/scripts/install.sh | bash
+```
+
+### Windows (PowerShell)
+
+```powershell
+powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/example/triggermind/main/scripts/install.ps1 | iex"
+```
+
+After install, just run:
+
+```bash
+triggermind
+```
+
+No coding needed: TriggerMind launches an interactive guide and asks what reminder you want.
+
+---
+
+## Quick examples
+
+```bash
+triggermind start 25m --message "Go back to writing"
+triggermind at 15:00 --message "Review the grant draft"
+triggermind list
+triggermind cancel <id>
+triggermind doctor
+triggermind update
+```
 
 ---
 
 ## Why conditional AI agents matter
 
-Most agent tooling today is either always listening, always polling, or always expensive. TriggerMind takes a different approach:
+Most agent tooling is always-on and noisy. TriggerMind is different:
 
-- **Dormant by default** → lower noise and distraction
-- **Explicit activation conditions** → stronger user control
-- **Local-first operation** → no cloud dependency for core behavior
-- **Bounded autonomy** → predictable intervention only when you request it
+- **Dormant by default**
+- **Activated only by explicit conditions**
+- **Local-first** (no cloud required)
+- **Human-controlled bounded autonomy**
 
-This lowers token waste, reduces intrusive behavior, and gives humans clear control over when an AI-like intervention layer should wake up.
+This reduces unnecessary token usage, risk, and intrusion.
 
 ---
 
 ## Features (MVP)
 
-- Human-friendly duration parsing (`25m`, `2h`, `1h30m`)
+- Human-friendly time parsing (`25m`, `2h`, `1h30m`)
 - Absolute-time triggers (`HH:MM` local time)
+- Friendly interactive setup mode (`triggermind` with no args)
 - Local JSON state persistence
 - Lightweight background scheduler daemon
-- Desktop notifications (macOS/Linux) + rich terminal fallback
-- Friendly command output, robust help text, and doctor diagnostics
-- Clean extension points for future trigger families
-
----
-
-## Installation
-
-### pip
-
-```bash
-pip install triggermind
-```
-
-### uv
-
-```bash
-uv tool install triggermind
-```
-
-### From source
-
-```bash
-git clone https://github.com/example/triggermind.git
-cd triggermind
-uv sync
-uv run triggermind --help
-```
-
----
-
-## Usage
-
-### Start a relative timer trigger
-
-```bash
-triggermind start 25m --message "Go back to writing"
-```
-
-### Start an absolute-time trigger
-
-```bash
-triggermind at 15:00 --message "Review the grant draft"
-```
-
-If the time already passed today, TriggerMind schedules it for tomorrow.
-
-### List scheduled triggers
-
-```bash
-triggermind list
-triggermind list --all
-```
-
-### Cancel a trigger
-
-```bash
-triggermind cancel <id>
-```
-
-### Run local diagnostics
-
-```bash
-triggermind doctor
-```
+- Desktop notifications (macOS/Linux) + terminal fallback
+- Clean extension points for future trigger types
 
 ---
 
@@ -112,29 +80,11 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for details.
 
 ---
 
-## Example intervention flow
-
-1. You run: `triggermind start 45m --message "Back to deep work"`
-2. TriggerMind stores the trigger locally.
-3. Scheduler daemon runs quietly in background.
-4. At due time, TriggerMind sends a local notification and prints intervention text.
-
----
-
 ## Roadmap
 
-### Near-term milestones
-
-1. **SQLite backend + reliability improvements** (file locking, crash-safe writes, retry semantics)
-2. **Plugin-style trigger registry** (calendar/focus/behavior trigger packages)
-3. **Optional LLM intervention templates** (still local-first and human-in-the-loop)
-
-### Future trigger stubs
-
-- Calendar trigger
-- Focus drift trigger
-- Behavioral pattern trigger
-- Biometric threshold trigger
+1. SQLite backend + crash-safe scheduling
+2. Plugin trigger registry for calendar/focus/behavior signals
+3. Optional local LLM intervention templates
 
 ---
 

@@ -3,14 +3,14 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timedelta
 import os
 import signal
 import subprocess
 import sys
 import time
-from datetime import datetime
 
-from triggermind.notifications.manager import send_notification
+from triggermind.notifications.manager import ReminderAction, prompt_reminder_action
 from triggermind.paths import daemon_log_file, pid_file, state_file
 from triggermind.storage.json_store import JSONTriggerStore
 
@@ -56,6 +56,27 @@ def ensure_daemon() -> bool:
     return True
 
 
+def _open_ui() -> None:
+    subprocess.Popen(  # noqa: S603
+        [sys.executable, "-m", "triggermind.main", "ui"],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        start_new_session=True,
+    )
+
+
+def apply_due_action(record, action: ReminderAction) -> None:
+    """Update a due record based on prompt action."""
+    if action == "snooze_5m":
+        record.due_at = datetime.now().astimezone() + timedelta(minutes=5)
+        record.status = "scheduled"
+        return
+
+    record.status = "fired"
+    if action == "open_triggermind":
+        _open_ui()
+
+
 def run_loop() -> None:
     """Main scheduler loop."""
     store = JSONTriggerStore(state_file())
@@ -77,8 +98,8 @@ def run_loop() -> None:
             if record.status != "scheduled":
                 continue
             if record.due_at <= now:
-                send_notification("TriggerMind", record.message)
-                record.status = "fired"
+                action = prompt_reminder_action("TriggerMind", record.message)
+                apply_due_action(record, action)
                 dirty = True
 
         if dirty:

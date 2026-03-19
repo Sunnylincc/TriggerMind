@@ -6,29 +6,29 @@ TriggerMind stays dormant by default and only intervenes when a user-defined con
 
 ## One-line install (copy/paste)
 
-> These commands avoid repo-specific raw URLs, so they work reliably on macOS, Linux, and Windows.
+> Use these **default** commands first (no `uv` required).
 
-### macOS + Linux (pip)
+### macOS + Linux
 
 ```bash
 python3 -m pip install --user -U triggermind
 ```
 
-### macOS + Linux (uv)
-
-```bash
-uv tool install triggermind --upgrade
-```
-
-### Windows PowerShell (pip)
+### Windows PowerShell
 
 ```powershell
 py -m pip install --user -U triggermind
 ```
 
-### Windows PowerShell (uv)
+If `py` is unavailable on Windows, use:
 
 ```powershell
+python -m pip install --user -U triggermind
+```
+
+### Optional (advanced): uv users
+
+```bash
 uv tool install triggermind --upgrade
 ```
 

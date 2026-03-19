@@ -2,7 +2,11 @@ $ErrorActionPreference = "Stop"
 
 if (Get-Command uv -ErrorAction SilentlyContinue) {
     Write-Host "[TriggerMind] Installing with uv..."
-    uv tool install triggermind --upgrade
+    try {
+        uv tool install triggermind --upgrade
+    } catch {
+        uv tool upgrade triggermind
+    }
 } elseif (Get-Command pipx -ErrorAction SilentlyContinue) {
     Write-Host "[TriggerMind] Installing with pipx..."
     pipx install triggermind --force

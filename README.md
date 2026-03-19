@@ -6,16 +6,30 @@ TriggerMind stays dormant by default and only intervenes when a user-defined con
 
 ## One-line install (copy/paste)
 
-### macOS + Linux
+> These commands avoid repo-specific raw URLs, so they work reliably on macOS, Linux, and Windows.
+
+### macOS + Linux (pip)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/example/triggermind/main/scripts/install.sh | bash
+python3 -m pip install --user -U triggermind
 ```
 
-### Windows (PowerShell)
+### macOS + Linux (uv)
+
+```bash
+uv tool install triggermind --upgrade
+```
+
+### Windows PowerShell (pip)
 
 ```powershell
-powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/example/triggermind/main/scripts/install.ps1 | iex"
+py -m pip install --user -U triggermind
+```
+
+### Windows PowerShell (uv)
+
+```powershell
+uv tool install triggermind --upgrade
 ```
 
 After install, just run:

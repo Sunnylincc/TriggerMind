@@ -6,26 +6,30 @@ TriggerMind stays dormant by default and only intervenes when a user-defined con
 
 ## One-line install (copy/paste)
 
-> `triggermind` is not published on PyPI yet. Use source install for now.
+> `triggermind` is not published on PyPI yet. Use direct source ZIP install.
 
-### If you already have this source folder
-
-#### macOS + Linux
+### macOS + Linux
 
 ```bash
-python3 -m pip install --user -U .
+python3 -m pip install --user -U "https://github.com/<YOUR_ORG>/triggermind/archive/refs/heads/main.zip"
 ```
 
-#### Windows PowerShell
+### Windows PowerShell
 
 ```powershell
-py -m pip install --user -U .
+py -m pip install --user -U "https://github.com/<YOUR_ORG>/triggermind/archive/refs/heads/main.zip"
 ```
 
 If `py` is unavailable on Windows, use:
 
 ```powershell
-python -m pip install --user -U .
+python -m pip install --user -U "https://github.com/<YOUR_ORG>/triggermind/archive/refs/heads/main.zip"
+```
+
+### Optional: install from local source folder
+
+```bash
+python3 -m pip install --user -U .
 ```
 
 After install, run:

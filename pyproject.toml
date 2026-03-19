@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "triggermind"
+version = "0.1.0"
+description = "Local-first, trigger-based AI agent CLI with bounded autonomy."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [
+  {name = "TriggerMind Contributors"}
+]
+keywords = ["ai-agent", "cli", "productivity", "local-first", "automation"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Environment :: Console",
+  "Operating System :: POSIX :: Linux",
+  "Operating System :: MacOS"
+]
+dependencies = [
+  "typer>=0.12.3"
+]
+
+[project.urls]
+Homepage = "https://github.com/example/triggermind"
+Repository = "https://github.com/example/triggermind"
+Issues = "https://github.com/example/triggermind/issues"
+
+[project.scripts]
+triggermind = "triggermind.main:run"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["triggermind"]
